@@ -26,24 +26,24 @@ down:
 
 restart: stop start
 
-dc_ps:
+dc-ps:
 	${DOCKER_COMPOSE} ps
 
-dc_logs:
+dc-logs:
 	${DOCKER_COMPOSE} logs -f
 
-dc_down:
+dc-down:
 	${DOCKER_COMPOSE} down -v --rmi=all --remove-orphans
 
 ##################
 # App
 ##################
 
-app_bash:
+app-bash:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bash
-php: app_bash
+php: app-bash
 
-npm_dev:
+npm-dev:
 	docker-compose -f ./docker/docker-compose.yml exec -u www-data php-fpm npm run dev
 
 test:
@@ -56,9 +56,9 @@ cache:
 # Static code analysis
 ##################
 
-cs_fix:
+cs-fix:
 	${DOCKER_COMPOSE_PHP_FPM_EXEC} vendor/bin/php-cs-fixer fix
-linter: cs_fix
+linter: cs-fix
 
-cs_fix_diff:
+cs-fix_diff:
 	${DOCKER_COMPOSE_PHP_FPM_EXEC} vendor/bin/php-cs-fixer fix --dry-run --diff

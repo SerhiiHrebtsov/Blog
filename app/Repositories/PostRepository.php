@@ -9,6 +9,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostRepository implements PostRepositoryInterface
 {
+    /** @var int  */
+    private const POSTS_PER_PAGE = 9;
+
     /**
      * @param Post $model
      */
@@ -17,13 +20,14 @@ class PostRepository implements PostRepositoryInterface
     }
 
     /**
+     * @param int|null $postsPerPage
      * @return LengthAwarePaginator
      */
-    public function getAllPosts(): LengthAwarePaginator
+    public function getAllPosts(int|null $postsPerPage = null): LengthAwarePaginator
     {
         return $this->model->with('user')
             ->orderBy('created_at', 'desc')
-            ->paginate(9);
+            ->paginate($postsPerPage ?? self::POSTS_PER_PAGE);
     }
 
     /**

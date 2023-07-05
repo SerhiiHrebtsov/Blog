@@ -55,7 +55,7 @@
                 Delete
               </button>
             </div>
-            <div class="">
+            <div>
               <p class="text-gray-500 font-bold text-sm">{{ post.user.name }}</p>
               <p class="text-gray-400 text-xs">{{ $filters.timeAgo(post.created_at) }}</p>
             </div>
@@ -70,7 +70,7 @@
         <Pagination
           class="mt-6"
           :links="links"
-          @page-changed="loadPosts"
+          @pageChanged="loadPosts"
         />
       </div>
     </div>

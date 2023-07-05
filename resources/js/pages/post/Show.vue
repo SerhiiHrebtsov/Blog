@@ -16,10 +16,13 @@
             >
               Back
             </Link>
+            <div>
+              <p class="text-gray-500 font-bold text-sm">{{ post.user.name }}</p>
+              <p class="text-gray-400 text-xs">{{ $filters.timeAgo(post.created_at) }}</p>
+            </div>
           </div>
-
           <h3 class="font-bold mb-4 text-xl">{{ post.title }}</h3>
-          <p class="mb-4">{{ post.content }}</p>
+          <p class="mb-6">{{ post.content }}</p>
         </div>
       </div>
     </div>

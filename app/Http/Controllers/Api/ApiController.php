@@ -15,7 +15,7 @@ class ApiController extends Controller
      * @param int $status
      * @return JsonResponse
      */
-    protected function response(string $message, array|JsonResource $payload = [], int $status = Response::HTTP_OK): JsonResponse
+    public function response(string $message, array|JsonResource $payload = [], int $status = Response::HTTP_OK): JsonResponse
     {
         return response()->json([
                 'message' => $message,
@@ -28,7 +28,7 @@ class ApiController extends Controller
      * @param int $status
      * @return JsonResponse
      */
-    protected function responseData(array|JsonResource $data = [], int $status = Response::HTTP_OK): JsonResponse
+    public function responseData(array|JsonResource $data = [], int $status = Response::HTTP_OK): JsonResponse
     {
         return response()->json([
             'data' => $data,
@@ -39,7 +39,7 @@ class ApiController extends Controller
      * @param string $route
      * @return JsonResponse
      */
-    protected function redirect(string $route): JsonResponse
+    public function redirect(string $route): JsonResponse
     {
         return response()->json([
             'redirect' => $route,

@@ -35,9 +35,6 @@ dc_logs:
 dc_down:
 	${DOCKER_COMPOSE} down -v --rmi=all --remove-orphans
 
-dc_restart:
-	make dc_stop dc_start
-
 ##################
 # App
 ##################
@@ -45,6 +42,9 @@ dc_restart:
 app_bash:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bash
 php: app_bash
+
+npm_dev:
+	docker-compose -f ./docker/docker-compose.yml exec -u www-data php-fpm npm run dev
 
 test:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bin/phpunit
